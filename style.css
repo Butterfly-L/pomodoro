@@ -1,0 +1,179 @@
+html{
+    font-size: 14px;
+}
+
+body{
+    background: rgb(248, 171, 157);
+    padding: 0 5% 0 5%;
+    
+}
+
+a{
+    text-decoration: none!important;
+}
+
+button{
+    background-color: rgba(255,255,255, .5);
+    border:none;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+/* ------tomato-------- */
+.tomato{
+    position: relative;
+    width: 9rem;
+    height: 7rem;
+    background: tomato;
+    border-radius: 40% 40% 50% 50%;
+    box-shadow: inset -2px -2px 0px 0px  rgb(148, 31, 10);
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.tomato::before{
+    content:'';
+    width: 4rem;
+    height: 3rem;
+    clip-path: polygon(50% 0%, 55% 34%, 98% 35%, 69% 51%, 79% 91%, 50% 56%, 21% 91%, 34% 48%, 2% 35%, 46% 34%);
+    background-color: rgb(22, 92, 22);
+    position: absolute;
+    top:-5px;
+    left:28px;
+    
+}
+.tomato-light-1{
+    width: 1rem;
+    height: 1rem;
+    background: white;
+    border-radius: 50%;
+    opacity: .7;
+    position: absolute;
+    top:30%;
+    right:10%;
+
+}
+.tomato-light-2{
+    width: 1rem;
+    height: 2rem;
+    background: white;
+    border-radius: 70%;
+    transform: rotate(25deg);
+    opacity: .7;
+    position: absolute;
+    top:45%;
+    right:20%;
+
+}
+
+/* containter */
+
+.container{
+    margin-top: 2rem;
+}
+
+.container:nth-child(4){
+    border-top: 1px solid;
+    width: 100%;
+    height: 300px;
+
+}
+
+/* Title Section */
+
+.title{
+    width: 100%;
+    text-align: center;
+}
+
+/* Clock Section */
+
+.tab-wrapper{
+    display: flex;
+    
+}
+
+.tab{
+    font-size: 2rem;
+    text-align: center;
+    width: 6rem;
+    padding: 0.5rem;
+    background: rgba(255,255,255, .5);
+    border-radius: 25% 25% 0 0;
+}
+
+.clock-wrapper{
+    background: rgba(255,255,255, .5);
+    width: 100%;
+    height: 300px;
+    border-radius: 0 5% 5% 5%;
+}
+
+/* task Section */
+.task{
+    width: 100%;
+    height: 4rem;
+    background: rgba(255,255,255, .5);
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.add-task{
+    display: flex;
+    justify-content: center;
+    background: rgba(255,255,255, .1);
+    border: 2px dashed rgba(255, 255, 255, 0.4);
+}
+
+.plus{
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-right: 1rem;
+}
+
+input{
+    background: transparent;
+    border-style: none;
+    border: 0 0 1px 0;
+    border-color: white;
+}
+
+input[type="text"]{
+    
+}
+
+
+
+/* menu */
+
+.menu{
+    width: 100%;
+    height: 60px;
+    background: mediumseagreen;
+    position: fixed;
+    bottom:0;
+    left:0;
+    display: flex;
+    justify-content: space-around ;
+    align-items: center ;
+    
+}
+
+.menu-item{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: palegreen;
+
+}
+
+.blank{
+    width: 100%;
+    height: 80px;
+}

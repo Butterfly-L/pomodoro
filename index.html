@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer 番茄鐘</title>
+    <link rel="stylesheet" href="./style.css">
+        
+</head>
+<body>
+
+    <!-- 純css + Vue -->
+    <!-- Header tomato -->
+    <div class="tomato">
+        <div class="tomato-light-1"></div>
+        <div class="tomato-light-2"></div>
+    </div>
+    <div id="app">
+        <div class="containter">
+            <h3>Working on...</h3>
+            <div class="title"><h1>Vue</h1></div>
+        </div>
+        <div class="container">
+            <div class="tab-wrapper">
+                <div class="tab" >Task</div>
+                <div class="tab">Break</div>
+            </div>
+            <div class="clock-wrapper">
+    
+            </div>
+    
+        </div>
+        <div class="container">
+            Next on...
+            {{ content }}
+    
+            <!-- start of task content -->
+            
+            <div class="task task-item" v-for="(item,key) in filteredTodos">
+                <input type="checkbox" v-model="item.completed">
+                {{ item.title }}
+    
+                
+            </div>
+    
+            
+            <div class="task add-task">
+                <div class="plus">+</div>
+                <input type="text" placeholder="Add Task" v-model="newTodo" @keyup.enter="addTodo">
+                <button type="button" @click="addTodo">Send</button>
+            </div>
+            
+    
+            <!-- end of task content -->
+        </div>
+        <div class="blank"></div>
+        <!-- bottom menu -->
+        <div class="menu">
+            <a href="#" :class="{'active': visibility == 'active'}" 
+                @click="visibility = 'active'" class="menu-item menu-task">           
+                    Tasks</a>
+            <a href="#" :class="{'active': visibility == 'all'}" 
+                @click="visibility = 'all'"
+                class="menu-item menu-pending">
+                All</a>
+            <a href="#" :class="{'active': visibility == 'completed'}" 
+                @click="visibility = 'completed'" class="menu-item menu-done">
+                Done</a>
+            <a href="#" :class="{'active': visibility == 'setting'}" 
+                @click="visibility = 'setting'"
+                class="menu-item menu-setting">
+                setting</a>
+        </div>
+    </div>
+    
+
+<!-- Vue放這裡 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="./script.js"></script>
+<script type="text/javascript">
+     var app = new Vue({
+     el:"#app",
+     data:{
+        
+        todos:[
+             {
+             id:'123',
+             title: '今天要做',
+             completed: false
+            }
+         ],
+        visibility: 'active',
+        
+
+     },
+     methods:{
+         addTodo: function(){
+             var value= this.newTodo.trim();
+             var timestamp = 
+             Math.floor(Date.now());
+             if(!value){
+                 return;
+             };
+             this.todos.push({
+                 id: timestamp,
+                 title: value,
+                 computed:false
+             })
+             this.newTodo=''
+
+         }
+     },
+     computed:{
+         filteredTodos: function(){
+           if(this.visibility == 'all'){
+                 return this.todos;
+             }
+            else if (this.visibility == 'active'){
+                var newTodos=[];
+                this.todos.forEach(function(item){
+                    if(!item.completed){
+                        newTodos.push(item);
+                    }
+                })
+                return newTodos;
+            }
+
+            else if (this.visibility == 'completed'){
+                var newTodos=[];
+                this.todos.forEach(function(item){
+                    if(item.completed){
+                        newTodos.push(item);
+                    }
+                })
+                return newTodos;
+             
+         }
+     },
+    
+    }
+
+
+
+ });
+</script>
+
+
+</body>
+</html>
